@@ -102,12 +102,6 @@ export function Navbar() {
     setMobileOpen(false);
   };
 
-  const navigateMobile = (href: string, index?: number) => {
-    if (index !== undefined) selectNavigation(index);
-    setMobileOpen(false);
-    window.location.assign(href);
-  };
-
   return (
     <motion.nav
       className="fixed top-0 inset-x-0 z-[var(--z-nav)] px-3 sm:px-4 nav-shell pointer-events-none"
@@ -219,9 +213,8 @@ export function Navbar() {
                       className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
                         activeIndex === index ? 'text-foreground bg-[var(--glass-bg-3)]' : 'text-muted hover:text-foreground'
                       }`}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        navigateMobile(item.href, index);
+                      onClick={() => {
+                        selectNavigation(index);
                       }}
                     >
                       {item.label}
