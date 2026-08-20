@@ -45,20 +45,20 @@ export function Contact() {
           />
 
           <div className="relative grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16">
-            <div>
+            <div className="min-w-0">
               <p className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-muted mb-6">
                 <span className="accent-dot" style={{ background: accentVar('green') }} aria-hidden="true" />
                 Direct channels
               </p>
 
-              <div className="flex flex-wrap gap-3" role="list" aria-label="Contact channels">
+              <div className="flex w-full min-w-0 flex-wrap gap-3" role="list" aria-label="Contact channels">
                 {contactContent.socialLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="group flex items-center gap-4 p-4 rounded-2xl glass-secondary transition-all duration-300 hover:shadow-[var(--glass-shadow-hover)] hover:-translate-y-0.5 flex-1 min-w-0 sm:min-w-[220px]"
+                    className="group flex w-full items-center gap-4 p-4 rounded-2xl glass-secondary transition-all duration-300 hover:shadow-[var(--glass-shadow-hover)] hover:-translate-y-0.5 sm:flex-1 sm:min-w-[220px]"
                     role="listitem"
                   >
                     <div className="w-11 h-11 rounded-xl glass-tertiary flex items-center justify-center flex-shrink-0">
@@ -77,7 +77,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="min-w-0 flex flex-col gap-8">
               <div className="flex items-center gap-3">
                 <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
                   <span
