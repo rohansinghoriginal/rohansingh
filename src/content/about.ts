@@ -18,7 +18,7 @@ Alongside analytics, I continue building my foundation in machine learning, data
   ],
   socialLinks: [
     { label: 'GitHub', href: 'https://github.com/rohansinghoriginal', external: true, icon: 'github' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/rohansinghbbdu', external: true, icon: 'linkedin' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/rohansinghbbbdu/', external: true, icon: 'linkedin' },
     { label: 'Email', href: 'mailto:rohansingh13902@gmail.com', external: true, icon: 'mail' },
   ],
 };

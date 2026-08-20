@@ -112,14 +112,14 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-6xl">
         <div
-          className={`pointer-events-auto relative glass-primary rounded-2xl transition-shadow duration-500 ${
+          className={`pointer-events-auto relative w-full min-w-0 overflow-hidden glass-primary rounded-2xl transition-shadow duration-500 ${
             scrolled ? 'shadow-[var(--glass-shadow)]' : 'shadow-[var(--glass-shadow-soft)]'
           }`}
         >
           <div className="flex h-14 items-center justify-between gap-4 px-4 sm:px-5">
             <motion.a
               href="/"
-              className="font-semibold text-lg tracking-tight text-foreground hover:text-foreground/70 transition-colors duration-200"
+              className="min-w-0 truncate font-semibold text-lg tracking-tight text-foreground hover:text-foreground/70 transition-colors duration-200"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               aria-label={`${siteConfig.name} - Home`}
