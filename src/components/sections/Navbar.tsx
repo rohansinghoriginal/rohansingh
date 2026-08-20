@@ -13,6 +13,15 @@ function getSectionId(href: string) {
   return hashIndex === -1 ? '' : decodeURIComponent(href.slice(hashIndex + 1));
 }
 
+function scrollToSection(id: string) {
+  const scroll = () => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  window.requestAnimationFrame(scroll);
+  window.setTimeout(scroll, 320);
+}
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -89,9 +98,7 @@ export function Navbar() {
       if (!id) return;
 
       window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => {
-          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+        scrollToSection(id);
       });
     };
 
@@ -126,9 +133,8 @@ export function Navbar() {
 
     if (window.location.pathname === '/' && id) {
       window.history.pushState(null, '', href);
-      window.requestAnimationFrame(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+      window.dispatchEvent(new Event('hashchange'));
+      scrollToSection(id);
       return;
     }
 
