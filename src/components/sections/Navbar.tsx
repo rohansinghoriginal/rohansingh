@@ -90,7 +90,7 @@ export function Navbar() {
     return () => window.removeEventListener('resize', handleResize);
   }, [activeIndex, positionBlob]);
 
-  const selectNavigation = (index: number) => {
+  const selectNavigation = (index: number, closeMenu = true) => {
     selectedIndexRef.current = index;
     if (selectionTimeoutRef.current !== null) clearTimeout(selectionTimeoutRef.current);
     selectionTimeoutRef.current = setTimeout(() => {
@@ -99,7 +99,7 @@ export function Navbar() {
     }, 1600);
     activeIndexRef.current = index;
     setActiveIndex(index);
-    setMobileOpen(false);
+    if (closeMenu) setMobileOpen(false);
   };
 
   return (
@@ -214,7 +214,8 @@ export function Navbar() {
                         activeIndex === index ? 'text-foreground bg-[var(--glass-bg-3)]' : 'text-muted hover:text-foreground'
                       }`}
                       onClick={() => {
-                        selectNavigation(index);
+                        selectNavigation(index, false);
+                        window.setTimeout(() => setMobileOpen(false), 250);
                       }}
                     >
                       {item.label}
