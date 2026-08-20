@@ -83,6 +83,23 @@ export function Navbar() {
     };
   }, [sectionIds]);
 
+  useEffect(() => {
+    const scrollToHash = () => {
+      const id = window.location.hash.slice(1);
+      if (!id) return;
+
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    };
+
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
+
   useLayoutEffect(() => {
     positionBlob(activeIndex);
     const handleResize = () => positionBlob(activeIndex);
@@ -100,6 +117,22 @@ export function Navbar() {
     activeIndexRef.current = index;
     setActiveIndex(index);
     if (closeMenu) setMobileOpen(false);
+  };
+
+  const navigateMobileSection = (href: string, index: number) => {
+    const id = getSectionId(href);
+    selectNavigation(index, false);
+    setMobileOpen(false);
+
+    if (window.location.pathname === '/' && id) {
+      window.history.pushState(null, '', href);
+      window.requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      return;
+    }
+
+    window.location.assign(href);
   };
 
   return (
@@ -213,9 +246,9 @@ export function Navbar() {
                       className={`text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
                         activeIndex === index ? 'text-foreground bg-[var(--glass-bg-3)]' : 'text-muted hover:text-foreground'
                       }`}
-                      onClick={() => {
-                        selectNavigation(index, false);
-                        window.setTimeout(() => setMobileOpen(false), 250);
+                      onClick={(event) => {
+                        event.preventDefault();
+                        navigateMobileSection(item.href, index);
                       }}
                     >
                       {item.label}
