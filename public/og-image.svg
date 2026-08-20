@@ -1,0 +1,12 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F2F2EF"/>
+  <circle cx="980" cy="80" r="260" fill="#ffffff" opacity="0.6"/>
+  <circle cx="160" cy="560" r="240" fill="#5b7fbf" opacity="0.05"/>
+  <g opacity="0.3">
+    <circle cx="560" cy="315" r="180" stroke="#1a1a1a" stroke-opacity="0.14" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle cx="560" cy="315" r="120" stroke="#5b7fbf" stroke-opacity="0.4" stroke-width="1" fill="none"/>
+    <circle cx="560" cy="315" r="46" fill="#ffffff"/>
+  </g>
+  <text x="560" y="452" font-family="system-ui, sans-serif" font-size="52" font-weight="700" fill="#1a1a1a" text-anchor="middle">Rohan Singh</text>
+  <text x="560" y="512" font-family="system-ui, sans-serif" font-size="24" fill="#666666" text-anchor="middle">AI Engineer &amp; Data Analyst</text>
+</svg>
